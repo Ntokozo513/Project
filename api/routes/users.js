@@ -61,12 +61,14 @@ router.post("/login",(req,res,next)=>{
         const token = jwt.sign({
           email: user[0].email,
           userId: user[0]._id
-        },"documents",{
+        },process.env.AUTH_TOKEN,{
           expiresIn : "1h"
         });
+        //res.header("checkToken",token).send(token)
       }
         return res.status(200).json({
-          message: "authorization successful"
+          message: "authorization successful",
+          token : req.userData
         });
       })
   }).catch(err =>{
@@ -77,9 +79,9 @@ router.post("/login",(req,res,next)=>{
   });
 });
 
-router.delete("/email",(req,res,next)=>{
+/*router.delete("/userId",(req,res,next)=>{
     User.remove({
-        email: req.params.email
+        userId: req.params._id
     }).exec().then(result =>{
         res.status(200).json({
             message: "user removed"
@@ -90,7 +92,7 @@ router.delete("/email",(req,res,next)=>{
             error: err
         })
     })
-})
+})*/
 
 
 module.exports = router;

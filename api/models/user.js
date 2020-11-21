@@ -4,7 +4,9 @@ const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     email: {
         type: String,
+        unique: true,
         required: true,
+        //match: "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
     },
     password: {
         type: String,

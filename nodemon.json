@@ -1,5 +1,6 @@
 {
     "env": {
-        "MONGO_ATLAS_PW": "project2DB"
+        "MONGO_ATLAS_PW": "project2DB",
+        "AUTH_TOKEN":"documents"
     }
 }

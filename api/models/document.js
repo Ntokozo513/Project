@@ -3,7 +3,12 @@ const mongoose = require("mongoose");
 const documentSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
-    link: String
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+
+    meta_data: String
 
 })
 
