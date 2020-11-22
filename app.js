@@ -11,7 +11,8 @@ const userRoutes = require("./api/routes/users")
 
 mongoose.connect("mongodb+srv://project2DB:project2DB@cluster0.kqqwj.mongodb.net/<dbname>?retryWrites=true&w=majority",{
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 })
 
 
@@ -33,6 +34,7 @@ app.use((req,res,next) =>{
 
 app.use("/documents",documentRoutes);
 app.use("/users",userRoutes)
+
 
 /*app.use((error,req,res,next)=>{
     res.status(500).json({
