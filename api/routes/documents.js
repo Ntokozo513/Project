@@ -38,7 +38,7 @@ const upload = multer({
 
 
 
-router.post("/",authcheck,upload.single("doc"),(req,res,next)=>{
+router.post("/",upload.single("doc"),(req,res,next)=>{
     const file = req.file
     if (!file) {
       const err = new Error('Please upload a file')
@@ -91,7 +91,7 @@ router.post("/",authcheck,upload.single("doc"),(req,res,next)=>{
     });
 });*/
 
-router.get("/:documentId",authcheck,(req,res,next)=>{
+router.get("/:documentId",(req,res,next)=>{
     const document = req.params.documentId;
     Document.find({user: document}).exec().then(doc =>{
         console.log("From database",doc);
@@ -113,7 +113,7 @@ router.get("/:documentId",authcheck,(req,res,next)=>{
 
 
 
-router.delete("/:documentId",authcheck,(req,res,next)=>{
+router.delete("/:documentId",(req,res,next)=>{
     const id = req.params.documentId;
     Document.remove({_id: id}).exec().then(result =>{
         res.status(200).json(result);

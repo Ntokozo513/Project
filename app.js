@@ -34,19 +34,19 @@ app.use((req,res,next) =>{
 app.use("/documents",documentRoutes);
 app.use("/users",userRoutes)
 
-app.use((error,req,res,next)=>{
+/*app.use((error,req,res,next)=>{
     res.status(500).json({
         error:{
             message: error.message
         }
     });
-});
+});*/
 
-/*app.use((req,res,next)=>{
+app.use((req,res,next)=>{
     res.status(200).json({
         message : "It works"
     });
 
-});*/
+});
 
 module.exports = app;
